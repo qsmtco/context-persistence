@@ -1,0 +1,21 @@
+---
+version: "2.1"
+project: "Demo Project"
+task: "Add user authentication"
+status: "in-progress"
+last_action: "Implemented OAuth2 flow"
+next_steps:
+  - "Write unit tests"
+  - "Update documentation"
+  - "Submit PR"
+context_anchor: "Working on auth"
+conversation_summary: "Short summary of recent work"
+updated: "2026-02-25T19:00:00.000Z"
+---
+This is the body section with detailed notes, decisions, and context.
+
+* Decision: Use JWT tokens
+* Blockers: None
+* Next meeting: Friday
+
+More detailed information about the implementation can be found here.

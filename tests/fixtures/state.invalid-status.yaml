@@ -1,0 +1,10 @@
+---
+version: "2.1"
+project: "Test Project"
+task: "Test task"
+status: "in progress"  # invalid, should be one of the enum values
+last_action: "Testing"
+next_steps: []
+updated: "2026-02-25T19:00:00.000Z"
+---
+This state should fail validation due to invalid status value.

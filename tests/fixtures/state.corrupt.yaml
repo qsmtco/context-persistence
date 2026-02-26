@@ -1,0 +1,9 @@
+---
+version: "2.1"
+project: "Corrupt State"
+task: "Test corruption"
+  bad_indentation: oops  # This YAML is invalid due to bad indentation
+next_steps: []
+updated: "2026-02-25T19:00:00.000Z"
+---
+Corrupt YAML; parser should back it up and return null

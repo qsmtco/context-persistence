@@ -1,0 +1,43 @@
+{
+  "name": "@qsmtco/context-persistence",
+  "version": "2.2.0",
+  "description": "Context Persistence plugin for OpenClaw - automatic state persistence across compaction and restarts with LRU cache and enhanced context anchoring",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:perf": "jest tests/performance",
+    "lint": "eslint .",
+    "verify": "npm run lint && npm test && npm run test:perf"
+  },
+  "keywords": [
+    "openclaw",
+    "persistence",
+    "context",
+    "anchoring",
+    "lru-cache",
+    "plugin"
+  ],
+  "author": "qsmtco",
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "optionalDependencies": {
+    "lru-cache": "^10.2.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "openclaw": ">=2026.2.0"
+  },
+  "repository": {
+    "url": "https://github.com/qsmtco/qrusher",
+    "type": "git",
+    "directory": "plugins/context-persistence"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "id": "context-persistence",
+  "name": "Context Persistence",
+  "description": "Automatic state persistence across compaction and restarts with LRU cache and enhanced context anchoring",
+  "version": "2.2.0",
+  "author": "qsmtco",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/qsmtco/qrusher",
+    "path": "plugins/context-persistence"
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "cacheMax": {
+        "type": "number",
+        "default": 100,
+        "minimum": 1,
+        "maximum": 1000,
+        "description": "Maximum number of cache entries"
+      },
+      "cacheTTLms": {
+        "type": "number",
+        "default": 300000,
+        "minimum": 60000,
+        "maximum": 3600000,
+        "description": "Cache entry TTL in milliseconds"
+      },
+      "enablePrefetch": {
+        "type": "boolean",
+        "default": false
+      },
+      "prefetchQueries": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      },
+      "summarizationBudget": {
+        "type": "object",
+        "properties": {
+          "maxCallsPerHour": { "type": "number", "default": 10 },
+          "enabled": { "type": "boolean", "default": true }
+        }
+      }
+    }
+  },
+  "uiHints": {
+    "cacheMax": { "label": "Cache Max Entries", "description": "Maximum number of cached memory_search results" },
+    "cacheTTLms": { "label": "Cache TTL (ms)", "description": "Time-to-live for cache entries" },
+    "enablePrefetch": { "label": "Enable Prefetch", "description": "Warm cache on session start with anticipated queries" },
+    "prefetchQueries": { "label": "Prefetch Queries", "description": "Queries to prefetch (JSON array)" },
+    "summarizationBudget": { "label": "Summarization Budget", "description": "LLM call limits for anchor generation" }
+  },
+  "hooks": {
+    "pre-compaction": {
+      "enabled": true,
+      "script": "./hooks/preCompaction.js",
+      "timeoutMs": 10000
+    },
+    "post-compaction": {
+      "enabled": true,
+      "script": "./hooks/postCompaction.js",
+      "timeoutMs": 15000
+    },
+    "session-start": {
+      "enabled": true,
+      "script": "./hooks/sessionStart.js",
+      "timeoutMs": 15000
+    },
+    "shutdown": {
+      "enabled": true,
+      "script": "./hooks/shutdown.js",
+      "timeoutMs": 5000
+    }
+  },
+  "tools": [
+    "context_persistence_read",
+    "context_persistence_write",
+    "context_persistence_discover",
+    "cached_memory_search",
+    "context_persistence_summarize",
+    "context_persistence_prefetch"
+  ],
+  "permissions": {
+    "fileSystem": {
+      "read": ["CONTEXT_PERSISTENCE.md", "memory/**/*.md"],
+      "write": ["CONTEXT_PERSISTENCE.md"]
+    },
+    "tools": {
+      "use": ["memory_search", "chat_completion", "generate", "llm", "openai"]
+    }
+  },
+  "metadata": {
+    "openclaw": {
+      "minVersion": "2026.2.0",
+      "docs": "https://github.com/qsmtco/qrusher/tree/main/plugins/context-persistence",
+      "tags": ["memory", "compaction", "state-management", "hooks", "cache", "lru", "anchoring"]
+    }
+  }
+}

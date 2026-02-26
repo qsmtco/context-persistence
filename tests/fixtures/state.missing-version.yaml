@@ -1,0 +1,10 @@
+---
+project: "Old Project"
+task: "Legacy task"
+status: "active"
+last_action: "Did something"
+next_steps:
+  - "migrate data"
+updated: "2026-01-15T10:30:00.000Z"
+---
+Legacy body without version field; should auto-migrate to 2.1
