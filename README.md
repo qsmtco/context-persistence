@@ -176,3 +176,4 @@ This plugin is part of the OpenClaw ecosystem. For issues, feature requests, or 
 ---
 
 **Made with ❤️ by Lieutenant Qrusher (qsmtco)**
+# ManuPea
