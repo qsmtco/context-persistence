@@ -41,7 +41,7 @@ The **Context Persistence** plugin transforms your OpenClaw agent from forgetful
 
 ```bash
 # Install directly from this repository
-openclaw plugins install https://github.com/YOUR-USERNAME/context-persistence.git
+openclaw plugins install https://github.com/qsmtco/context-persistence.git
 
 # Restart Gateway
 openclaw gateway restart
